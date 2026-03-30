@@ -21,7 +21,6 @@ void mostrarEnergia(unsigned char energia);
 void mostrarReglas();
 int validarEntrada(int x);
 
-
 int main()
 {
     int opcion;
@@ -155,4 +154,69 @@ int main()
     return 0;
 }
 
+//Funciones 1
+//Función que genera un número aleatorio entre 1 y 99999
+int generarNumero(){
+    return (rand() % 99999) + 1;
+}
+//Función para obtener la longitud del número
+//Entra por ejemplo 4567, primero se divide entre 10 y se va partiendo el número
+//Hasta que este sea cero para detener el ciclo, va a ir aumentando con el contador de longitud
+//Y este es el que va a decir qué longitud tiene
+int longitudNumero(int n){  
+    int longitud = 0;
+    while(n > 0)
+    {
+        n /= 10;
+        longitud++;
+    }
+    return longitud;
+}
+//Función que calcula la suma de los dígitos del número
+int calcularSumaDigitos(int n){
+    int suma = 0;
+    while(n > 0)
+    {
+        suma += n % 10;
+        n /= 10;
+    }
+    return suma;
+}
+/*
+Pista: El último dígito es: 4
+Pista: Tiene 5 cifras.
+Pista: El número es par.
+Pista: Divisible entre 7.
+*/
+void mostrarPistas(int secreto, int intento){
+    int espar = 0
+    ultimo_digito = secreto % 10;
+    longitud = longitudNumero(secreto)
+    if(secreto % 2 == 0){
+        espar = 1;
+    }else{
+        espar = 0;
+    }
 
+    printf("Pista: El ultimo digito: %d\n", ultimo_digito);
+    printf("Pista: Tiene %d cifras.\n", longitud);
+    printf("Pista: El numero es %s.\n", (espar == 1) ? "par" : "impar");
+
+    //Pruebas de divisibilidad entre 3, 5, 7
+    if(secreto % 3 == 0){
+        printf("Pista: Divisible entre 3\n");
+    }
+    if(secreto % 5 == 0){
+        printf("Pista: Divisible entre 5\n");
+    }
+    if(secreto % 7 == 0){
+        printf("Pista: Divisible entre 7\n");
+    }
+    
+    if(secreto > intento){
+        printf("El numero secreto es MAYOR que tu intento\n");
+    }else{
+        printf("El numero secreto es MENOR que tu intento\n");
+    }
+
+}
